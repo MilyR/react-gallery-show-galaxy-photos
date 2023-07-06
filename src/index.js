@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import "bootstrap/dist/css/bootstrap.css";
 import {Provider} from 'react-redux';
-import store from './store.ts';
+import store from './store/store.ts';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -16,4 +16,3 @@ root.render(
     </Provider>
   </BrowserRouter>,
 );
-
