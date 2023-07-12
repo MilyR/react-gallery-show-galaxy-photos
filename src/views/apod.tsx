@@ -1,7 +1,8 @@
+import Gallery from '../components/gallery/index.ts'
 
 const Apod = () => {
   return(
-    <h1> Apod </h1>
+    <Gallery />
 
   )
   

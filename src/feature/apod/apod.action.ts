@@ -11,9 +11,10 @@ export const getApodStart = () => (
   }
 )
 
-export const getApodSuccess = () => (
+export const getApodSuccess = (payload) => (
   {
     type: GET_APOD_SUCCESS,
+    payload
   }
 )
 

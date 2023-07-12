@@ -8,8 +8,8 @@ import rootSaga from './root.saga.ts';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer , applyMiddleware(sagaMiddleware));
-
 sagaMiddleware.run(rootSaga);
+
 
 export const action = type => store.dispatch({type})
 

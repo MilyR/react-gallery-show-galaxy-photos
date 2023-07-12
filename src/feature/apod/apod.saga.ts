@@ -8,16 +8,17 @@ import {
   getApodError,
 } from './apod.action.ts';
 
-export function* apodSaga() {
-  yield takeEvery(GET_APOD_START, fetchApod);
-}
-
 function* fetchApod() {
   try {
     const service = new ApodService()
     const apod = yield call(service.getApod);
-    yield put(getApodSuccess(apod));
+    yield put(getApodSuccess(apod.data));
   } catch (e) {
     yield put(getApodError());
   }
+}
+
+
+export function* apodSaga() {
+  yield takeLatest(GET_APOD_START, fetchApod);
 }

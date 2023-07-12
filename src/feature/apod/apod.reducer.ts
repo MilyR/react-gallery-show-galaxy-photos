@@ -6,10 +6,10 @@ import {
 } from './apod.constants.ts';
 
 const initialState = {
-  apod: {
+  dataApod: {
     date: null,
     title: null,
-    url: null,
+    url: '',
   }
 };
 
@@ -17,10 +17,18 @@ export default function apodReducer(state = initialState, action) {
   // The reducer normally looks at the action type field to decide what happens
   switch (action.type) {
     case GET_APOD_START: {
-
+      return {...state}
     }
     case GET_APOD_SUCCESS: {
-      
+      const newState = {
+        ...state,
+        dataApod: {
+          date: action.payload.date,
+          url: action.payload.url,
+          title: action.payload.title
+        }
+      }
+      return newState;
     }
     case GET_APOD_ERROR: {
       
