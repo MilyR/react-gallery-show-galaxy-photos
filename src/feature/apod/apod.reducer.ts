@@ -9,6 +9,8 @@ const initialState = {
   dataApod: {
     date: null,
     title: null,
+    explanation: null,
+    service_version: null,
     url: '',
   }
 };
@@ -20,21 +22,24 @@ export default function apodReducer(state = initialState, action) {
       return {...state}
     }
     case GET_APOD_SUCCESS: {
+      console.log({payload: action.payload})
       const newState = {
         ...state,
         dataApod: {
           date: action.payload.date,
           url: action.payload.url,
-          title: action.payload.title
+          title: action.payload.title,
+          explanation: action.payload.explanation,
+          service_version: action.payload.service_version
         }
       }
       return newState;
     }
     case GET_APOD_ERROR: {
-      
+      break;
     }
     case GET_APOD_CANCEL: {
-      
+      break;
     }
     // Do something here based on the different types of actions
     default:
