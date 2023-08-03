@@ -1,16 +1,12 @@
 import {
-  GET_APOD_START,
-  GET_APOD_SUCCESS,
-  GET_APOD_ERROR,
-  GET_APOD_CANCEL,
-  GET_APOD_BY_DATE_START,
-  GET_APOD_BY_DATE_SUCCESS,
-  GET_APOD_BY_DATE_ERROR,
-  GET_APOD_BY_DATE_CANCEL,
-} from './apod.constants.ts';
+  GET_ASTEROID_START,
+  GET_ASTEROID_SUCCESS,
+  GET_ASTEROID_ERROR,
+  GET_ASTEROID_CANCEL,
+} from './asteroid.constants.ts';
 
 const initialState = {
-  dataApod: {
+  dataAsteroid: {
     date: null,
     title: null,
     explanation: null,
@@ -19,17 +15,17 @@ const initialState = {
   }
 };
 
-export default function apodReducer(state = initialState, action) {
+export default function asteroidReducer(state = initialState, action) {
   // The reducer normally looks at the action type field to decide what happens
   switch (action.type) {
-    case GET_APOD_START: {
+    case GET_ASTEROID_START: {
       return {...state}
     }
-    case GET_APOD_SUCCESS: {
+    case GET_ASTEROID_SUCCESS: {
       console.log({payload: action.payload})
       const newState = {
         ...state,
-        dataApod: {
+        dataAsteroid: {
           date: action.payload.date,
           url: action.payload.url,
           title: action.payload.title,
@@ -39,26 +35,12 @@ export default function apodReducer(state = initialState, action) {
       }
       return newState;
     }
-    case GET_APOD_ERROR: {
+    case GET_ASTEROID_ERROR: {
       break;
     }
-    case GET_APOD_CANCEL: {
+    case GET_ASTEROID_CANCEL: {
       break;
     }
-    case GET_APOD_BY_DATE_START: {
-      return {...state}
-    }
-    case GET_APOD_BY_DATE_SUCCESS: {
-      console.log({payload: action.payload})
-      return {...state}
-    }
-    case GET_APOD_BY_DATE_ERROR: {
-      break;
-    }
-    case GET_APOD_BY_DATE_CANCEL: {
-      break;
-    }
-
     // Do something here based on the different types of actions
     default:
       // If this reducer doesn't recognize the action type, or doesn't

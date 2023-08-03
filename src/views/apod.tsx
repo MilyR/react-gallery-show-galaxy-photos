@@ -1,4 +1,4 @@
-import Gallery from '../components/gallery/index.ts'
+import Gallery from '../components/galleryApod/index.ts'
 
 const Apod = () => {
   return(

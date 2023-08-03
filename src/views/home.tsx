@@ -1,9 +1,12 @@
+import Card from "../components/card/card.tsx";
+
 const Home = () => {
   return(
-    <h1> home </h1>
+    <Card> home </Card>
 
   )
   
 }
 
 export default Home;
+

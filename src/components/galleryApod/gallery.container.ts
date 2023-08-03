@@ -2,7 +2,6 @@ import {connect} from 'react-redux';
 import Gallery from './gallery.tsx';
 import {getApodStart} from '../../feature/apod/apod.action.ts';
 
-
 const mapStateToProps = state => {
   return {
     apod: state.apod,
