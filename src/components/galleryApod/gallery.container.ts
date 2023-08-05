@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Gallery from './gallery.tsx';
-import {getApodStart} from '../../feature/apod/apod.action.ts';
+import {getApodStart, getApodByDateStart} from '../../feature/apod/apod.action.ts';
+import { startTransition } from 'react';
 
 const mapStateToProps = state => {
   return {
@@ -14,7 +15,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getApodStart : () => dispatch(getApodStart())
+    getApodStart: () => dispatch(getApodStart()),
+    getApodByDate: (date) => dispatch(getApodByDateStart(date)),
   }
 }
 

@@ -9,7 +9,7 @@ const mapStateToProps = state => {
     date: state.asteroid.dataAsteroid.date,
     title: state.asteroid.dataAsteroid.title,
     explanation: state.asteroid.dataAsteroid.explanation,
-    service_version: state.asteroid.dataAsteroid.service_version
+    service_version: state.asteroid.dataAsteroid.service_version,
   } 
 }
 const mapDispatchToProps = dispatch => {
@@ -22,5 +22,5 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(GalleryAsteroid)

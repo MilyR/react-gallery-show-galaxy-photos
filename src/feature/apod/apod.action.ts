@@ -7,6 +7,10 @@ import {
   GET_APOD_BY_DATE_SUCCESS,
   GET_APOD_BY_DATE_ERROR,
   GET_APOD_BY_DATE_CANCEL,
+  GET_APOD_BY_PERIOD_START,
+  GET_APOD_BY_PERIOD_SUCCESS,
+  GET_APOD_BY_PERIOD_CANCEL,
+  GET_APOD_BY_PERIOD_ERROR,
 } from './apod.constants.ts';
 
 export const getApodStart = () => (
@@ -57,5 +61,31 @@ export const getApodByDateError = () => (
 export const getApodByDateCancel = () => (
   {
     type: GET_APOD_BY_DATE_CANCEL,
+  }
+)
+
+export const getApodByPeriodStart= (payload) => (
+  {
+    type: GET_APOD_BY_PERIOD_START,
+    payload,
+  }
+)
+
+export const getApodByPeriodSuccess = (payload) => (
+  {
+    type: GET_APOD_BY_PERIOD_SUCCESS,
+    payload
+  }
+)
+
+export const getApodByPeriodError = () => (
+  {
+    type: GET_APOD_BY_PERIOD_ERROR,
+  }
+)
+
+export const getApodByPeriodCancel = () => (
+  {
+    type: GET_APOD_BY_PERIOD_CANCEL,
   }
 )

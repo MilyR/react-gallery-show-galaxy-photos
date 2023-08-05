@@ -1,14 +1,17 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   GET_APOD_START,
   GET_APOD_BY_DATE_START,
+  GET_APOD_BY_PERIOD_START,
 } from './apod.constants.ts';
 import ApodService from './apod.api.ts';
 import {
   getApodSuccess,
   getApodError,
-  get_apod_by_date_success,
-  get_apod_by_date_error,
+  getApodByDateSuccess,
+  getApodByDateError,
+  getApodByPeriodSuccess,
+  getApodByPeriodError,
 } from './apod.action.ts';
 
 function* fetchApod() {
@@ -31,9 +34,19 @@ function* fetchApodByDate(action) {
   }
 }
 
+function* fetchApodByPeriod(action) {
+  try {
+    const service = new ApodService();
+    const { startDate, endDate } = action.payload; 
+    const apod = yield call(service.getApodByPeriod, startDate, endDate);
+    yield put(getApodByPeriodSuccess(apod.data));
+  } catch (e) {
+    yield put(getApodByPeriodError());
+  }
+}
+
 export function* apodSaga() {
   yield takeLatest(GET_APOD_START, fetchApod);
-  
-
-
+  yield takeLatest(GET_APOD_BY_DATE_START, fetchApodByDate);
+  yield takeLatest(GET_APOD_BY_PERIOD_START, fetchApodByPeriod);
 }

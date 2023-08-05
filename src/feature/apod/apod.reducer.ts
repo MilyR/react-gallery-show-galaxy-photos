@@ -7,6 +7,10 @@ import {
   GET_APOD_BY_DATE_SUCCESS,
   GET_APOD_BY_DATE_ERROR,
   GET_APOD_BY_DATE_CANCEL,
+  GET_APOD_BY_PERIOD_START,
+  GET_APOD_BY_PERIOD_SUCCESS,
+  GET_APOD_BY_PERIOD_ERROR,
+  GET_APOD_BY_PERIOD_CANCEL,
 } from './apod.constants.ts';
 
 const initialState = {
@@ -50,12 +54,35 @@ export default function apodReducer(state = initialState, action) {
     }
     case GET_APOD_BY_DATE_SUCCESS: {
       console.log({payload: action.payload})
-      return {...state}
+      const newState = {
+        ...state,
+        dataApod: {
+          date: action.payload.date,
+          url: action.payload.url,
+          title: action.payload.title,
+          explanation: action.payload.explanation,
+          service_version: action.payload.service_version
+        }
+      }
+      return newState;
     }
     case GET_APOD_BY_DATE_ERROR: {
       break;
     }
     case GET_APOD_BY_DATE_CANCEL: {
+      break;
+    }
+
+    case GET_APOD_BY_PERIOD_START: {
+      return {...state}
+    }
+    case GET_APOD_BY_PERIOD_SUCCESS: {
+      return {...state}
+    }
+    case GET_APOD_BY_PERIOD_ERROR: {
+      break;
+    }
+    case GET_APOD_BY_PERIOD_CANCEL: {
       break;
     }
 
