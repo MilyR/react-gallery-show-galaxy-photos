@@ -1,26 +1,27 @@
-import * as React from 'react';
+import { useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Image from "../../assets/image/image.jpg";
 import { useNavigate } from "react-router-dom";
 
-
-
-const MediaCard = () => {
+const MediaCard = ({apod, getApod}) => {
   const navigate = useNavigate();
 
   const handleClick =() => {
     navigate("/apod");
   }
+
+  useEffect(() => {
+   getApod()
+  }, []);
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    apod.url && <Card sx={{ maxWidth: 800 }}>
       <CardMedia
-        sx={{ height: 140 }}
-        image={Image}
+        sx={{ height: 380 }}
+        image={apod.url}
         title="Apod"
       />
       <CardContent>
@@ -28,14 +29,13 @@ const MediaCard = () => {
           Apod
         </Typography>
         <Typography variant="body2" color="text.secondary">
-        La astrofotógrafa Cari Letelier capturó esta increíble foto de la aurora boreal
-         sobre la cascada de Goðafoss en Islandia
+          {apod.title}
         </Typography>
       </CardContent>
       <CardActions>
         
-        <Button size="small" onClick={handleClick}>Learn More</Button>
-        
+        <Button size="small" onClick={handleClick}>click Here</Button>
+         
       </CardActions>
     </Card>
   );

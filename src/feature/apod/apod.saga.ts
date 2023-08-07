@@ -3,8 +3,9 @@ import {
   GET_APOD_START,
   GET_APOD_BY_DATE_START,
   GET_APOD_BY_PERIOD_START,
+  GET_APOD_BY_THUMBS
 } from './apod.constants.ts';
-import ApodService from './apod.api.ts';
+import ApodService from './apod.service.ts';
 import {
   getApodSuccess,
   getApodError,
@@ -43,10 +44,12 @@ function* fetchApodByPeriod(action) {
   } catch (e) {
     yield put(getApodByPeriodError());
   }
-}
+    
+  }
 
 export function* apodSaga() {
   yield takeLatest(GET_APOD_START, fetchApod);
   yield takeLatest(GET_APOD_BY_DATE_START, fetchApodByDate);
   yield takeLatest(GET_APOD_BY_PERIOD_START, fetchApodByPeriod);
+  
 }

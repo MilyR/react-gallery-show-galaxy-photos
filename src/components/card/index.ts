@@ -1,3 +1,3 @@
-import Card from "./card.tsx";
+import Card from "./card.container.ts";
 
 export default Card;

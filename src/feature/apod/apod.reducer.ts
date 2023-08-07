@@ -29,8 +29,18 @@ export default function apodReducer(state = initialState, action) {
     case GET_APOD_START: {
       return {...state}
     }
+
+  const initialState = {
+      dataApod: {
+        date: null,
+        title: null,
+        explanation: null,
+        service_version: null,
+        url: '',
+      }
+    }; 
+
     case GET_APOD_SUCCESS: {
-      console.log({payload: action.payload})
       const newState = {
         ...state,
         dataApod: {
@@ -85,7 +95,6 @@ export default function apodReducer(state = initialState, action) {
     case GET_APOD_BY_PERIOD_CANCEL: {
       break;
     }
-
     // Do something here based on the different types of actions
     default:
       // If this reducer doesn't recognize the action type, or doesn't
